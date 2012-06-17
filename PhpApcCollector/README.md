@@ -11,7 +11,7 @@ __Nginx__
 
 Put the stats_apc.php file in the webserver root for http://localhost/. This way you will be able to crawl the statistics from the url http://localhost/stats_apc.php. You can test your setup from console:
 
-   curl http://localhost/stats_apc.php
+	curl http://localhost/stats_apc.php
    
 If this returned a JSON object that means it's working. 
 
@@ -19,7 +19,7 @@ __Diamond__
 
 In /etc/diamond/collectors/PhpApcCollector.conf insert the followings
 
-   enabled = True
-   status_uri = /stats_apc.php
+	enabled = True
+	status_uri = /stats_apc.php
    
 Restart Diamond and you're all set.
