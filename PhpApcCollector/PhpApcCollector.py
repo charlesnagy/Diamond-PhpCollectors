@@ -13,7 +13,8 @@ class PhpApcCollector(diamond.collector.Collector):
         """
         Returns the default collector settings
         """
-        return {
+        config = super(PhpApcCollector, self).get_default_config()
+        config.update({
             'path':     'php.apc',
             
             # Which rows of 'status' you would like to publish.
@@ -22,8 +23,9 @@ class PhpApcCollector(diamond.collector.Collector):
             # Leave unset to publish all
             #'publish': ''
 
-	    'status_uri': 	'/stats_apc.php',
-       }
+            'status_url': 	'http://localhost/stats_apc.php',
+        })
+        return config
 
     def get_stats(self, config):
         # stuff that's always ignored, aren't 'stats'
@@ -32,9 +34,9 @@ class PhpApcCollector(diamond.collector.Collector):
         stats = {}
         # get php-apc stats
         try:
-            stdout = urllib.urlopen('http://localhost/{uri}'.format(uri=config['status_uri'])).read()
+            stdout = urllib.urlopen(config['status_url']).read()
         except IOError, e:
-            self.log.exception('Failed to get stats from %s', config['status_uri'])
+            self.log.exception('Failed to get stats from %s', config['status_url'])
         else:
             # parse stats
 	    data = json.loads(stdout) 
