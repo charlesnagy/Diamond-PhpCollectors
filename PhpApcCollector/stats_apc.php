@@ -3,7 +3,7 @@
  * Helper file for PhpApcCollector.py 
  * collectes php apc statistics for Graphite with Diamond
  *
- * @author Károly Nagy <n_karoly@ymail.com>
+ * @author Károly Nagy <dr.karoly.nagy@gmail.com>
  * http://charlesnagy.info/
  * 
  */ 
